@@ -2,6 +2,8 @@
 // В PHP 4.1.0 и более ранних версиях следует использовать $HTTP_POST_FILES 
 // вместо $_FILES.
 include_once('misc.php');
+
+
 $login = auth();
 $uploaddir = 'files/';
 $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
