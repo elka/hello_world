@@ -3,11 +3,12 @@
 	$login = auth();
 	$predmets=array();
 	$db = connectdb();
-	$query = "SELECT predmet FROM pred";
+	$query = "SELECT * FROM pred";
 	$com = mysql_query($query);
 	if ($com!="") {
 		while ($row=mysql_fetch_assoc($com)) {
-			$predmets[]= $row['predmet'];
+			$predmets[]=array("pred"=> $row['predmet'],
+								"lg" => $row['login']);
 		};
 	};
 ?>
@@ -41,7 +42,9 @@
 		<div class="t">
 			<br/>
 			<? foreach($predmets as $predmet){
-				echo "	<a class='ris' href='stran.php?pre=$predmet'><div > $predmet</div></a>" ; 
+			$pre=$predmet["pred"];
+			$lg=$predmet["lg"];
+				echo "	<a class='ris' href='stran.php?pre=$pre&lg=$lg'><div > $pre</div></a>" ; 
 			} ?>
 		</div>
 		</center>

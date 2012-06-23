@@ -62,7 +62,7 @@
                                 </tr>
 								<tr>
                                         <td>E-mail:</td>
-                                        <td><input type="textfield" name="email"/></td>
+                                        <td><input type="email" name="email"/></td>
                                 </tr>
                                 <tr>
                                         <td colspan="2">

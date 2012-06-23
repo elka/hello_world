@@ -13,6 +13,18 @@
 							"name" => $row['name']);
 		};
 	};
+	$lg=$_GET['lg'];
+	$query = "SELECT * FROM users where login='$lg'" ;
+	$com = mysql_query($query);
+	if ($com!="") {
+		while ($row=mysql_fetch_assoc($com)) {
+			$data[]= array ("surname" => $row['surname'], 
+							"name" => $row['name'],
+							"email"=>$row['email'],
+							"otchestvo" => $row['otchestvo']);
+		};
+	};
+	
 		$comments[] = array();
 		$query = "SELECT * FROM pos where predmet='$pre'";
 		$com = mysql_query($query);
@@ -94,7 +106,23 @@
 						}
 					} ?>
 					</ul>
+					<div class="zag2">Лектор</div>
 					
+					<?  foreach($data as $dat){ 
+							$surname=$dat["surname"]; 
+							$name=$dat["name"];
+							$otchestvo=$dat["otchestvo"];
+							$email=$dat["email"];
+							echo "$surname $name $otchestvo <br/>   
+							<a href='mailto:$email' >$email</a>
+							" ;
+							?> <br/> <?
+						
+					} ?>
+					
+					<? 
+					$surname=$data["surname"];
+					echo "$surname" ;?>
 			</div>
 		</div>	</center>
 		</center>
